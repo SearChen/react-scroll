@@ -1,0 +1,21 @@
+# WebStoram
+.idea
+
+# Mac
+.DS_Store
+
+# Logs
+logs
+*.log
+
+node_modules
+# Bower
+bower_components/
+
+# tmp file
+dist/
+build/
+publish/
+*.css
+.idea/
+.gitignore
