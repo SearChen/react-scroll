@@ -1,9 +1,6 @@
 # WebStoram
 .idea
 
-# Mac
-.DS_Store
-
 # Logs
 logs
 *.log
@@ -17,5 +14,4 @@ dist/
 build/
 publish/
 *.css
-.idea/
 .gitignore
