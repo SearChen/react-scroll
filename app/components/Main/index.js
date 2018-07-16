@@ -1,10 +1,11 @@
 import {Component} from 'react';
+import {Link } from "react-router-dom";
 
 class Main extends Component{
 	render () {
 		return (
 			<div>
-				测试DEMO
+				<Link to="/scroll">测试DEMO</Link>
 			</div>
 		)
 	}

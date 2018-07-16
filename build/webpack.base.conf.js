@@ -8,6 +8,7 @@ function resolve(dir) {
 }
 
 const isProduction = process.env.NODE_ENV === 'production'
+const cssMinimize = process.env.NODE_ENV !== 'development';
 
 module.exports = {
 	entry: {
@@ -41,21 +42,29 @@ module.exports = {
 				query: {compact: false}     // do not use in product env!
 			}, {
 				test: /\.css$/,
-				// loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-				use: [
-					'style-loader',
-					{
-						loader: 'css-loader',
-						options: {
-							// enable CSS Modules
-							modules: true,
-							importLoaders: 1,
-							// customize generated class names
-							localIdentName: '[local]_[hash:base64:8]'
-						}
+				// loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
+				loader: ExtractTextPlugin.extract({
+					fallback: {
+						loader: 'style-loader'
 					},
-					'postcss-loader'
-				]
+					use: {
+						loader: 'css-loader'
+					}
+				})
+				// use: [
+				// 	'style-loader',
+				// 	{
+				// 		loader: 'css-loader',
+				// 		options: {
+				// 			// enable CSS Modules
+				// 			modules: true,
+				// 			importLoaders: 1,
+				// 			// customize generated class names
+				// 			localIdentName: '[local]_[hash:base64:8]'
+				// 		}
+				// 	},
+				// 	'postcss-loader'
+				// ]
 			}, {
 				test: /\.less$/,
 				use: ExtractTextPlugin.extract({

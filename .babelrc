@@ -4,7 +4,10 @@
         "react",
         "stage-2"
     ],
-    "plugins": [],
+    "plugins": [
+        "transform-runtime",
+        "transform-decorators-legacy"
+    ],
     "ignore": [
 //        "./app/library/NIM_Web_NIM_v4.1.0.js"
     ]

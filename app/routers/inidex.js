@@ -3,6 +3,7 @@ import createHistory from 'history/createBrowserHistory'
 
 const history = createHistory()
 import Main from '../components/Main'
+import Scroll from '../components/ScrollBar'
 
 const Routers = () => {
 	return (
@@ -10,6 +11,7 @@ const Routers = () => {
 			<Switch>
 				{/* these are good */}
 				<Route exact path='/' component={Main}/>
+				<Route exact path='/scroll' component={Scroll}/>
 			</Switch>
 		</Routers>
 	)

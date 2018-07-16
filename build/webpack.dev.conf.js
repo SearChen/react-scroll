@@ -5,6 +5,7 @@ let merge = require('webpack-merge')
 let baseWebpackConfig = require('./webpack.base.conf')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+let ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig, {
 	// cheap-module-eval-source-map is faster for development
@@ -26,6 +27,7 @@ module.exports = merge(baseWebpackConfig, {
 		new webpack.ProvidePlugin({
 			"React": "react",
 		}),
-		new FriendlyErrorsPlugin()
+		new FriendlyErrorsPlugin(),
+		new ExtractTextPlugin("[name].css", {allChunks: true}),
 	]
 })

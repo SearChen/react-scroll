@@ -50,7 +50,7 @@ app.use(webpackHotMiddleware(compiler, {
 	overlay: true,
 	report: true
 }));
-let port = 8585;
+let port = 8181;
 // app.listen(hostPost, '0.0.0.0', function (err) {
 // 	if (err) {
 // 		console.log(err)
