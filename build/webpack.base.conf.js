@@ -30,7 +30,8 @@ module.exports = {
 		],
 		//模块别名定义，方便后续直接引用别名，无须多写长长的地址
 		alias: {
-			'Components': resolve('app/components')
+			'Components': resolve('app/components'),
+			'@': path.join(__dirname, '../app')
 		}
 	},
 	module: {
@@ -42,29 +43,15 @@ module.exports = {
 				query: {compact: false}     // do not use in product env!
 			}, {
 				test: /\.css$/,
-				// loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
-				loader: ExtractTextPlugin.extract({
-					fallback: {
-						loader: 'style-loader'
-					},
-					use: {
-						loader: 'css-loader'
-					}
-				})
-				// use: [
-				// 	'style-loader',
-				// 	{
-				// 		loader: 'css-loader',
-				// 		options: {
-				// 			// enable CSS Modules
-				// 			modules: true,
-				// 			importLoaders: 1,
-				// 			// customize generated class names
-				// 			localIdentName: '[local]_[hash:base64:8]'
-				// 		}
+				use: ExtractTextPlugin.extract('style-loader', 'css-loader')
+				// use: ExtractTextPlugin.extract({
+				// 	fallback: {
+				// 		loader: 'style-loader'
 				// 	},
-				// 	'postcss-loader'
-				// ]
+				// 	use: {
+				// 		loader: 'css-loader'
+				// 	}
+				// })
 			}, {
 				test: /\.less$/,
 				use: ExtractTextPlugin.extract({

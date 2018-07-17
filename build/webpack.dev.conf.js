@@ -28,6 +28,6 @@ module.exports = merge(baseWebpackConfig, {
 			"React": "react",
 		}),
 		new FriendlyErrorsPlugin(),
-		new ExtractTextPlugin("[name].css", {allChunks: true}),
+		new ExtractTextPlugin("css/[name].css", {allChunks: true}),
 	]
 })

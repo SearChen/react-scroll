@@ -1,5 +1,7 @@
 import {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import Styling from './index.less'
+import CSSModules from 'react-css-modules'
 
 const VERTICAL = 'vertial';
 const HORIZONTAL = 'horizontal';
@@ -71,6 +73,9 @@ const styles = {
     }
 };
 
+
+
+@CSSModules(Styling)
 export default class FreeScrollbar extends PureComponent {
     static displayName = 'FreeScrollbar';
     static propTypes = {
@@ -309,7 +314,7 @@ export default class FreeScrollbar extends PureComponent {
                 style={{...this.props.style, ...styles.main}}
             >
                 <div
-                    className="FreeScrollbar-container" 
+                    className="FreeScrollbar-container"
                     style={{...containerStyles, ...styles.container}} 
                     ref={container => this.el = container}
                     onScroll={this.handlerContainerScroll}
@@ -317,30 +322,30 @@ export default class FreeScrollbar extends PureComponent {
                     {this.props.children}
                 </div>
                 {this.state.showVeriticalTrack ? 
-                    <div 
-                        className={`FreeScrollbar-vertical-track ${this.props.className ? this.props.className + '-vertical-track' : ''}`} 
+                    <div
+						className={`FreeScrollbar-vertical-track ${this.props.className ? this.props.className + '-vertical-track' : ''}`}
                         style={this.props.className ? Object.assign(verticalTrackStyles, styles.track.vertical) : Object.assign(verticalTrackStyles, styles.track.vertical, styles.track.verticalCustomize)}
                     >
                         <div
-                            className={`FreeScrollbar-vertical-handler ${this.props.className ? this.props.className + '-vertical-handler' : ''}`} 
+							className={`FreeScrollbar-vertical-handler ${this.props.className ? this.props.className + '-vertical-handler' : ''}`}
                             onMouseDown={this.handleVerticalHandlerMouseDown.bind(this, VERTICAL)}
                             style={this.props.className ? Object.assign(verticalHandlerStyles, styles.handler.vertical) : Object.assign(verticalHandlerStyles, styles.handler.vertical, styles.handler.verticalCustomize)}></div>
                     </div>
                 : null}
                 {this.state.showHorizontalTrack ? 
-                    <div 
-                        className={`FreeScrollbar-horizontal-track ${this.props.className ? this.props.className + '-horizontal-track' : ''}`} 
+                    <div
+						className={`FreeScrollbar-horizontal-track ${this.props.className ? this.props.className + '-horizontal-track' : ''}`}
                         style={this.props.className ? Object.assign(horizontalTrackStyles, styles.track.horizontal) : Object.assign(horizontalTrackStyles, styles.track.horizontal, styles.track.horizontalCustomize)}
                     >
                         <div
-                            className={`FreeScrollbar-horizontal-handler ${this.props.className ? this.props.className + '-horizontal-handler' : ''}`} 
+							className={`FreeScrollbar-horizontal-handler ${this.props.className ? this.props.className + '-horizontal-handler' : ''}`}
                             onMouseDown={this.handleVerticalHandlerMouseDown.bind(this, HORIZONTAL)}
                             style={this.props.className ? Object.assign(horizontalHandlerStyles, styles.handler.horizontal) : Object.assign(horizontalHandlerStyles, styles.handler.horizontal, styles.handler.horizontalCustomize)}></div>
                     </div> 
                 : null}
                 {this.state.showHorizontalTrack && this.state.showVeriticalTrack && !this.props.fixed ? 
                     <div
-                        className={`FreeScrollbar-square ${this.props.className ? this.props.className + '-square' : ''}`}
+						className={`FreeScrollbar-square ${this.props.className ? this.props.className + '-square' : ''}`}
                         style={styles.square}></div>
                 : null}
             </div>
